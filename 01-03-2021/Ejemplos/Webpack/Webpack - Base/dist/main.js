@@ -1,0 +1,1 @@
+(()=>{"use strict";var e=Array.prototype.join;document.body.appendChild(function(){const n=document.createElement("div");return n.innerHTML=(r=" ",null==(t=["hello","webpack"])?"":e.call(t,r)),n;var t,r}())})();

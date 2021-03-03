@@ -1,0 +1,22 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "description": "0. npm init\r 1. npm i webpack webpack-cli -D\r 2. npm i lodash-es\r 3. component.js => import { join } from \"lodash-es\"\r 4. component.js => export\r 5. index.js => import { component } from './component';\r 6. package.json => \"build\": \"webpack\",\r 7. npm run build\r 8. index.html => eliminar script y agregar referencia <script src=\"./dist/main.js\"></script>\r 9. reemplazar en el package.json\r <!--",
+  "main": "index.js",
+  "scripts": {
+    "watch": "webpack --watch --env development",
+    "build": "webpack --env development",
+    "build-prod": "webpack --env production"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^5.24.2",
+    "webpack-cli": "^4.5.0"
+  },
+  "dependencies": {
+    "css-loader": "^5.1.1",
+    "lodash-es": "^4.17.21",
+    "style-loader": "^2.0.0"
+  }
+}
