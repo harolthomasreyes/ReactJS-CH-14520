@@ -7,6 +7,48 @@ function App() {
   const [db, setDb] = useState(getFirestore());
   const [lastId, setLastId] = useState();
 
+  function getById() {
+    const productos = db
+      .collection("productos")
+      .doc(document.getElementById("idDoc").value);
+
+    productos.get().then((res) => {
+      console.log(res.data());
+    });
+  }
+
+  function getAll() {
+    const productos = db.collection("productos");
+
+    productos.get().then((res) => {
+      console.log(res.docs);
+      if (res.size > 0) {
+        res.docs.map((d) => {
+          console.log({
+            id: d.id,
+            ...d.data(),
+          });
+        });
+      }
+    });
+  }
+
+  function getByFilter() {
+    const productos = db.collection("productos").where("precio", "==", 300);
+
+    productos.get().then((res) => {
+      console.log(res.docs);
+      if (res.size > 0) {
+        res.docs.map((d) => {
+          console.log({
+            id: d.id,
+            ...d.data(),
+          });
+        });
+      }
+    });
+  }
+
   function create() {
     const newOrder = {
       user: { id: 1, nombre: "Ramirez", email: "ramirez@gmail.com" },
@@ -53,9 +95,9 @@ function App() {
       <button onClick={updateById}>update</button>
       <button onClick={deleteById}>delete</button>
       <br />
-      <button>Get All</button>
-      <button>Get by filter</button>
-      <button>Get by id</button>
+      <button onClick={getAll}>Get All</button>
+      <button onClick={getByFilter}>Get by filter</button>
+      <button onClick={getById}>Get by id</button>
     </div>
   );
 }
